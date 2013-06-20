@@ -1,10 +1,4 @@
-<html>
-<head>
-	<title>403 Forbidden</title>
-</head>
-<body>
-
-<p>Airtel index page here</p>
-
-</body>
-</html>
+        <p>Airtel index page here</p>
+        <br />
+        <br />
+        <a href="<?php echo site_url('auth/logout') ?>">Logout</a>
