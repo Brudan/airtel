@@ -38,6 +38,13 @@
 /*            MAIN CONTENT            */
 /**************************************/
 
+.leftmenu {
+	float: left;
+	width: 200px;
+	height: auto;
+	border: 1px solid gray;
+}
+
 
 
 /**************************************/
