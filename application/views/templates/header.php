@@ -24,3 +24,13 @@ if (!$this->ion_auth->logged_in()){
         <link rel="stylesheet" href="<?php echo base_url()?>css/style.css" type="text/css" media="screen, projection">
     </head>
     <body>
+        <div>
+            <div class="top">
+                <p>Airtel index page here</p>
+                <br />
+                <br />
+            </div>
+            <div class="main">
+                <div class="nav">
+                    <?php $this->load->view('templates/nav'); ?>
+                </div>

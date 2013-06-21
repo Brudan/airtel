@@ -31,4 +31,20 @@ class pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    public function queries()
+    {
+        $data['title'] = "Queries";
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/queries');
+        $this->load->view('templates/footer');
+    }
+
+    public function responses()
+    {
+        $data['title'] = "Responses";
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/responses');
+        $this->load->view('templates/footer');
+    }
+
 }
