@@ -51,6 +51,16 @@ class pages extends CI_Controller {
 
     public function responses()
     {
+        global $per_page;
+        $config = array();
+        $config["base_url"] = site_url('pages/responses');
+        $config["total_rows"] = $this->airtel_model->record_count("response");
+        $config["per_page"] = $per_page;
+        $config["uri_segment"] = 3;
+        $this->pagination->initialize($config);
+        $page = ($this->uri->segment(3)) ? $this->uri->segment(3) : 0;
+        $data["results"] = $this->airtel_model->get_data("response",'','',$config["per_page"], $page);
+        $data["links"] = $this->pagination->create_links();
         $data['title'] = "Responses";
         $this->load->view('templates/header', $data);
         $this->load->view('pages/responses');
