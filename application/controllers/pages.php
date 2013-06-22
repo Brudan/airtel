@@ -12,10 +12,8 @@ class pages extends CI_Controller {
     public function __construct()
     {
         parent::__construct();
-        $this->load->model('airtel_model');
         $this->load->library('table');
         $this->load->helper('html');
-        $this->load->helper('url');
         $this->load->library('calendar');
         $this->load->library('encrypt');
         $this->load->dbutil();
@@ -45,7 +43,7 @@ class pages extends CI_Controller {
         $data["links"] = $this->pagination->create_links();
         $data['title'] = "Queries";
         $this->load->view('templates/header', $data);
-        $this->load->view('pages/queries', $data);
+        $this->load->view('pages/queries');
         $this->load->view('templates/footer');
     }
 
@@ -64,6 +62,14 @@ class pages extends CI_Controller {
         $data['title'] = "Responses";
         $this->load->view('templates/header', $data);
         $this->load->view('pages/responses');
+        $this->load->view('templates/footer');
+    }
+
+    function respond($id){
+        $data["result"] = $this->airtel_model->get_data("query",'',array('id' => $id));
+        $data['title'] = "Response Form";
+        $this->load->view('templates/header', $data);
+        $this->load->view('pages/respond');
         $this->load->view('templates/footer');
     }
 

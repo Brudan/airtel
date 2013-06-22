@@ -51,4 +51,18 @@ class airtel_model extends CI_Model{
         $this->db->delete($table,$vars);
     }
 
+    function add_response($data){
+        $this->db->insert('response', $data);
+    }
+
+    public function update_response($id, $vars){
+        $this->db->where('id', $id);
+        $this->db->update('response', $vars);
+    }
+
+    function delete_response(){
+        $this->db->where('id', $this->uri->segment(3));
+        $this->db->delete('response');
+    }
+
 }
