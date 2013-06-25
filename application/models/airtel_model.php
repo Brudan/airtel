@@ -52,6 +52,8 @@ class airtel_model extends CI_Model{
     }
 
     function add_response($data){
+        $this->db->where('id', $data['query_id']);
+        $this->db->update('query', array('solved'=>1));
         $this->db->insert('response', $data);
     }
 

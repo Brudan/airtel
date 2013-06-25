@@ -73,4 +73,14 @@ class pages extends CI_Controller {
         $this->load->view('templates/footer');
     }
 
+    function handle_response(){
+        $data = array(
+            'query_id' => $_POST['id'],
+            'admin_id' => $this->session->userdata['user_id'],
+            'details' => $_POST['response']
+        );
+        $this->airtel_model->add_response($data);
+        $this->queries();
+    }
+
 }

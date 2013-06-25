@@ -15,7 +15,7 @@
         $cat = $this->airtel_model->get_data("category","details",array("id"=>$query->cat));
         $solved = $this->airtel_model->get_data("status",array("short_desc", "details"),array("id"=>$query->solved));
 ?>
-        <tr><td><?=$query->phone?></td><td><?=$cat[0]->details?></td><td><?=$query->details?></td><td><?=$query->date?></td><td title="<?=$solved[0]->details?>"><?=$solved[0]->short_desc?></td><td><a href="<?php echo site_url("pages/respond/$query->id") ?>">Respond</a></td></tr>
+        <tr><td><?=$query->phone?></td><td><?=$cat[0]->details?></td><td><?=$query->details?></td><td><?=$query->date?></td><td title="<?=$solved[0]->details?>"><?=$solved[0]->short_desc?></td><td><?php if($solved[0]->short_desc == "No"){ ?><a href="<?php echo site_url("pages/respond/$query->id") ?>">Respond</a><?php } ?></td></tr>
 <?php } ?>
 </table>
 <?php //var_dump($results); ?>
