@@ -22,6 +22,9 @@
         <td><a href="<?php echo site_url('auth/index') ?>">Users</a></td>
     </tr>
     <tr>
+        <td><a href="<?php echo site_url('pages/categories') ?>">Categories</a></td>
+    </tr>
+    <tr>
         <td><a href="<?php echo site_url('auth/logout') ?>">Logout</a></td>
     </tr>
 </table>
