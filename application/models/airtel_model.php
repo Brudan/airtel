@@ -67,4 +67,9 @@ class airtel_model extends CI_Model{
         $this->db->delete('response');
     }
 
+    function del_cat(){
+        $this->db->where('id', $this->uri->segment(3));
+        $this->db->delete('category');
+    }
+
 }

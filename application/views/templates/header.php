@@ -22,7 +22,10 @@ if (!$this->ion_auth->logged_in()){
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/ie.css" type="text/css" media="screen, projection">
         <![endif]-->
         <link rel="stylesheet" href="<?php echo base_url()?>assets/css/style.css" type="text/css" media="screen, projection">
-        <script src="<?php echo base_url()?>assets/js/jquery-1.10.1.min.js" type="text/javascript"></script>
+        <link rel="stylesheet" href="<?php echo base_url()?>assets/css/ui-lightness/jquery-ui-1.10.3.custom.css">
+        <script src="<?php echo base_url()?>assets/js/jquery-1.9.1.js" type="text/javascript"></script>
+        <script src="<?php echo base_url()?>assets/js/jquery-ui-1.10.3.custom.js" type="text/javascript"></script>
+
     </head>
     <body>
         <div>

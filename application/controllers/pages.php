@@ -83,7 +83,7 @@ class pages extends CI_Controller {
         $this->queries();
     }
 
-    public function categories()
+    function categories()
     {
         global $per_page;
         $config = array();
@@ -99,6 +99,11 @@ class pages extends CI_Controller {
         $this->load->view('templates/header', $data);
         $this->load->view('pages/categories');
         $this->load->view('templates/footer');
+    }
+
+    function del_cat(){
+        $this->airtel_model->del_cat();
+        $this->categories();
     }
 
 }

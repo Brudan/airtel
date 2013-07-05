@@ -1,13 +1,13 @@
 -- phpMyAdmin SQL Dump
--- version 4.0.0-beta2
+-- version 3.5.1
 -- http://www.phpmyadmin.net
 --
 -- Host: localhost
--- Generation Time: Jun 22, 2013 at 02:13 AM
+-- Generation Time: Jul 05, 2013 at 01:40 AM
 -- Server version: 5.5.24-log
--- PHP Version: 5.4.3
+-- PHP Version: 5.3.13
 
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+SET SQL_MODE="NO_AUTO_VALUE_ON_ZERO";
 SET time_zone = "+00:00";
 
 
@@ -28,7 +28,9 @@ SET time_zone = "+00:00";
 
 CREATE TABLE IF NOT EXISTS `category` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `details` varchar(255) NOT NULL,
+  `short_name` varchar(255) NOT NULL,
+  `details` text,
+  `date` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
 
@@ -36,8 +38,8 @@ CREATE TABLE IF NOT EXISTS `category` (
 -- Dumping data for table `category`
 --
 
-INSERT INTO `category` (`id`, `details`) VALUES
-(1, 'Mobile Money');
+INSERT INTO `category` (`id`, `short_name`, `details`, `date`) VALUES
+(1, 'Mobile Money', NULL, '0000-00-00 00:00:00');
 
 -- --------------------------------------------------------
 
@@ -97,7 +99,7 @@ CREATE TABLE IF NOT EXISTS `query` (
 --
 
 INSERT INTO `query` (`id`, `phone`, `cat`, `details`, `date`, `solved`) VALUES
-(1, '0193691902', 1, 'Why can''t I receive my money?', '2013-06-22 01:31:52', 0);
+(1, '0193691902', 1, 'Why can''t I receive my money?', '2013-06-22 01:31:52', 1);
 
 -- --------------------------------------------------------
 
@@ -114,7 +116,14 @@ CREATE TABLE IF NOT EXISTS `response` (
   PRIMARY KEY (`id`),
   KEY `query_id` (`query_id`),
   KEY `admin_id` (`admin_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=latin1 AUTO_INCREMENT=1 ;
+) ENGINE=InnoDB  DEFAULT CHARSET=latin1 AUTO_INCREMENT=2 ;
+
+--
+-- Dumping data for table `response`
+--
+
+INSERT INTO `response` (`id`, `admin_id`, `query_id`, `details`, `date`) VALUES
+(1, 1, 1, 'put on the phone', '2013-06-25 01:40:28');
 
 -- --------------------------------------------------------
 
@@ -169,7 +178,7 @@ CREATE TABLE IF NOT EXISTS `users` (
 --
 
 INSERT INTO `users` (`id`, `ip_address`, `username`, `password`, `salt`, `email`, `activation_code`, `forgotten_password_code`, `forgotten_password_time`, `remember_code`, `created_on`, `last_login`, `active`, `first_name`, `last_name`, `company`, `phone`) VALUES
-(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1371863759, 1, 'Admin', 'istrator', 'ADMIN', '0');
+(1, '\0\0', 'administrator', '59beecdf7fc966e2f17fd8f65a4a9aeb09d4a3d4', '9462e8eee0', 'admin@admin.com', '', NULL, NULL, NULL, 1268889823, 1372988123, 1, 'Admin', 'istrator', 'ADMIN', '0');
 
 -- --------------------------------------------------------
 
@@ -203,8 +212,8 @@ INSERT INTO `users_groups` (`id`, `user_id`, `group_id`) VALUES
 -- Constraints for table `query`
 --
 ALTER TABLE `query`
-  ADD CONSTRAINT `query_ibfk_2` FOREIGN KEY (`solved`) REFERENCES `status` (`id`),
-  ADD CONSTRAINT `query_ibfk_1` FOREIGN KEY (`cat`) REFERENCES `category` (`id`) ON DELETE CASCADE;
+  ADD CONSTRAINT `query_ibfk_1` FOREIGN KEY (`cat`) REFERENCES `category` (`id`) ON DELETE CASCADE,
+  ADD CONSTRAINT `query_ibfk_2` FOREIGN KEY (`solved`) REFERENCES `status` (`id`);
 
 --
 -- Constraints for table `response`
